@@ -1,0 +1,307 @@
+
+        :root {
+            --parchment-base: #e8d5b5;
+            --parchment-light: #f4ebd0;
+            --ink: #2c2420;
+            --accent-wax: #7a3a3a;
+            --border-ink: rgba(44, 36, 32, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Background looks like a wooden desk or old library surface */
+            background-color: #dcc7a1;
+            background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png'); 
+            color: var(--ink);
+            font-family: 'EB Garamond', serif;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* VINTAGE SIDEBAR */
+        nav {
+            display: none; /* Controlled by your JS */
+            width: 300px;
+            background: var(--parchment-base);
+            border-right: 3px double var(--ink);
+            padding: 2.5rem 1.5rem;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 10px;
+        }
+
+        /* MAIN CONTENT AREA */
+        main {
+            flex: 1;
+            padding: 2rem 4rem;
+            overflow-y: auto;
+            background: var(--parchment-light);
+            /* Subtle paper grain texture */
+            background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+            position: relative;
+        }
+
+        /* SEARCH SECTION */
+        .search-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .search-bar {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--ink);
+            border-bottom: 2px solid var(--ink);
+            padding: 1rem;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.1rem;
+            color: var(--ink);
+            outline: none;
+        }
+
+        .btn-search, .btn-show, .btn-save, .btn-shownav {
+            background: var(--ink);
+            color: var(--parchment-light);
+            font-family: 'Special Elite', cursive;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-search {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+
+        .btn-shownav {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 100;
+            border-radius: 0;
+        }
+
+        .btn-show {
+            margin: 1rem 0;
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid var(--ink);
+        }
+
+        .btn-show:hover {
+            background: var(--ink);
+            color: var(--parchment-light);
+        }
+
+        /* INPUT CARD (Journal entry style) */
+        .card {
+    white-space: pre-wrap;
+}
+        .input-card {
+            background: rgba(255,255,255,0.3);
+            border: 1px solid var(--border-ink);
+            padding: 1.5rem;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--ink);
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            resize: none;
+            outline: none;
+            min-height: 100px;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-ink);
+            padding-top: 1rem;
+        }
+
+        /* NOTE CARDS (The Archive Results) */
+        #notes2 {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .note-card {
+            border-left: 4px solid var(--accent-wax);
+            background: rgba(0,0,0,0.02);
+            padding: 1.5rem;
+            line-height: 1.6;
+            font-size: 1.2rem;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* LOADER (Ink Blot Style) */
+        #loader {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(232, 213, 181, 0.9);
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Special Elite';
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px double var(--ink);
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 1.2s infinite linear;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+
+        /* //auth */
+
+        #authModal {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 36, 32, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box {
+    background: var(--parchment-light);
+    background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+    border: 2px double var(--ink);
+    padding: 3rem;
+    width: 420px;
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.auth-title {
+    font-family: 'Special Elite';
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+.auth-subtitle {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 2rem;
+    opacity: 0.7;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 2rem;
+}
+
+.auth-tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-family: 'Special Elite';
+    font-size: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--ink);
+}
+
+.auth-tab.active {
+    border-bottom: 3px solid var(--ink);
+    opacity: 1;
+}
+
+.auth-tab.inactive {
+    border-bottom: 3px solid transparent;
+    opacity: 0.5;
+}
+
+.auth-error {
+    color: var(--accent-wax);
+    font-style: italic;
+    margin-bottom: 1rem;
+    display: none;
+    text-align: center;
+}
+
+.auth-field {
+    margin-bottom: 1.2rem;
+}
+
+.auth-field label {
+    font-family: 'Special Elite';
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.auth-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--ink);
+    padding: 0.5rem 0;
+    font-family: 'EB Garamond';
+    font-size: 1.1rem;
+    color: var(--ink);
+    outline: none;
+}
+
+.auth-submit {
+    width: 100%;
+    background: var(--ink);
+    color: var(--parchment-light);
+    font-family: 'Special Elite';
+    font-size: 1rem;
+    border: none;
+    padding: 0.8rem;
+    cursor: pointer;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.8rem;
+}
+
+.auth-submit:hover {
+    opacity: 0.85;
+}

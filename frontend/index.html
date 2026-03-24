@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Archive | AI Second Brain</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <!-- AUTH MODAL -->
+<div id="authModal">
+    <div class="auth-box">
+        <h2 class="auth-title">THE ARCHIVE</h2>
+        <p class="auth-subtitle">Your personal knowledge vault</p>
+
+        <!-- TABS -->
+        <div class="auth-tabs">
+            <button type="button" id="tabLogin" class="auth-tab active" onclick="switchTab('login')">Sign In</button>
+            <button type="button" id="tabSignup" class="auth-tab inactive" onclick="switchTab('signup')">Register</button>
+        </div>
+
+        <!-- ERROR -->
+        <p id="authError" class="auth-error"></p>
+
+        <!-- NAME (signup only) -->
+        <div id="nameField" class="auth-field" style="display:none;">
+            <label>Full Name</label>
+            <input id="authName" type="text" placeholder="Your name..." />
+        </div>
+
+        <!-- EMAIL -->
+        <div class="auth-field">
+            <label>Email</label>
+            <input id="authEmail" type="email" placeholder="your@email.com" />
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="auth-field">
+            <label>Password</label>
+            <input id="authPassword" type="password" placeholder="••••••••" />
+        </div>
+
+        <button type="button" id="authSubmitBtn" class="auth-submit" onclick="handleAuth()">
+            Enter the Archive
+        </button>
+    </div>
+</div>
+
+
+
+
+
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p style="margin-top: 15px;">Drying the ink...</p>
+    </div>
+
+    <button type="button" class="btn-shownav" onclick="shownav()">
+        <i data-lucide="book-open" size="18"></i>
+    </button>
+
+    <nav id="sidebar" style="padding-top: 100px;">
+        <div class="logo">
+            <i data-lucide="feather" style="color: var(--accent-wax)"></i>
+            <span>THE ARCHIVE</span>
+        </div>
+        <div style="color: var(--ink); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Index</div>
+        </nav>
+
+    <main>
+        <div class="search-container">
+            <input id="query" class="search-bar" placeholder="Search the records..." />
+            <button type="button" class="btn-search" onclick="querysearch()">Search</button>
+        </div>
+
+        <button type="button" class="btn-show" onclick="shownotes()">Consult Full Ledger</button>
+        <button type="button" class="btn" onclick="clean()">Reset</button>
+
+        <div class="input-card">
+            <textarea id="input" placeholder="Transcribe a new thought..."></textarea>
+            <div class="card-actions">
+                <button type="button" class="btn-save" onclick="addnotes()">
+                    <i data-lucide="quill" size="18"></i> Save to Records
+                </button>
+            </div>
+        </div>
+
+        <h3 style="font-family: 'Special Elite'; margin-top: 2rem; border-bottom: 1px solid var(--ink); padding-bottom: 5px;">Results</h3>
+        <div id="notes2"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="app.js"></script>
+    <script>lucide.createIcons();</script>
+    <script>
+        let x = 0;
+        function shownav() {
+            const nav = document.getElementById("sidebar"); // Use ID for better selection
+            if(x == 0) {
+                nav.style.display = "flex";
+                x = 1;
+            } else {
+                nav.style.display = "none";
+                x = 0;
+            }
+        }
+    </script>
+</body>
+</html>

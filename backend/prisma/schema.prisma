@@ -1,0 +1,47 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id    String  @id @default(uuid())
+  name  String
+  email String  @unique
+  password String
+
+  notes Note[]
+  chats Chat[]
+}
+
+model Note {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id])
+
+  chunks Chunk[]
+}
+
+model Chunk {
+  id        String   @id @default(uuid())
+  text      String
+  embedding String
+
+  noteId String
+  note   Note @relation(fields: [noteId], references: [id])
+}
+
+model Chat {
+  id        String   @id @default(uuid())
+  role      String
+  content   String
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id])
+}

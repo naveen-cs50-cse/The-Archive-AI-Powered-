@@ -2,7 +2,8 @@
 
 // Deploy-friendly API endpoint configuration:
 // set window.API_BASE_URL in index.html or host env variables at build time.
-const API_BASE = window.API_BASE_URL || "http://localhost:4000";
+
+const API_BASE = "https://the-archive-ai-powered-iicx.onrender.com";
 const API_PATH = `${API_BASE}/api`;
 
 function toggleLoading(show) {
